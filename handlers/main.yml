@@ -1,0 +1,6 @@
+---
+- name: uci commit dhcp
+  uci: command=commit config=dhcp
+
+- name: reload network for openwrt-dhcp
+  raw: /etc/init.d/network reload

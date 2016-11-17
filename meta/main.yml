@@ -1,0 +1,13 @@
+---
+galaxy_info:
+  author: flandi GT
+  description: configure dhcp aspects of your openwrt system.
+  min_ansible_version: 1.7
+  platforms:
+   - name: Openwrt
+     versions:
+     - 15.05
+  categories:
+    - system
+dependencies:
+  - { role: openwrt-uci }

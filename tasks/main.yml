@@ -1,0 +1,9 @@
+---
+- name: set dhcp-configs
+  include: set_dhcp_config.yml
+  vars:
+    interface: "{{item.interface}}"
+    leasetime: "{{item.leasetime | default({})}}"
+    limit: "{{item.limit | default({})}}"
+    start: "{{item.start | default({})}}"
+  with_items: "{{dhcp_configs}}"

@@ -1,0 +1,51 @@
+---
+- name: set dhcp_config interface
+  uci:
+    command: set
+    config: "dhcp"
+    section: "{{interface}}"
+    option: "interface"
+    type: "dhcp"
+    value: "{{interface}}"
+  notify:
+    - uci commit dhcp
+    - reload network for openwrt-dhcp
+
+- name: set dhcp_config leasetime
+  uci:
+    command: set
+    config: "firewall"
+    section: "{{interface}}"
+    option: "leasetime"
+    type: "dhcp"
+    value: "{{leasetime}}"
+  when: leasetime != {}
+  notify:
+    - uci commit dhcp
+    - reload network for openwrt-dhcp
+
+- name: set dhcp_config limit
+  uci:
+    command: set
+    config: "firewall"
+    section: "{{interface}}"
+    option: "limit"
+    type: "dhcp"
+    value: "{{limit}}"
+  when: limit != {}
+  notify:
+    - uci commit dhcp
+    - reload network for openwrt-dhcp
+
+- name: set dhcp_config start
+  uci:
+    command: set
+    config: "firewall"
+    section: "{{interface}}"
+    option: "start"
+    type: "dhcp"
+    value: "{{start}}"
+  when: start != {}
+  notify:
+    - uci commit dhcp
+    - reload network for openwrt-dhcp
