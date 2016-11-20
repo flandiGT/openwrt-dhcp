@@ -1,0 +1,36 @@
+---
+- name: set dhcp_host name
+  uci:
+    command: set
+    config: "dhcp"
+    index: "{{index}}"
+    option: "name"
+    type: "host"
+    value: "{{name}}"
+  notify:
+    - uci commit dhcp
+    - reload network for openwrt-dhcp
+
+- name: set dhcp_host mac
+  uci:
+    command: set
+    config: "dhcp"
+    index: "{{index}}"
+    option: "mac"
+    type: "host"
+    value: "{{mac}}"
+  notify:
+    - uci commit dhcp
+    - reload network for openwrt-dhcp
+
+- name: set dhcp_host ip
+  uci:
+    command: set
+    config: "dhcp"
+    index: "{{index}}"
+    option: "ip"
+    type: "host"
+    value: "{{ip}}"
+  notify:
+    - uci commit dhcp
+    - reload network for openwrt-dhcp
