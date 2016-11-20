@@ -1,7 +1,7 @@
 openwrt-dhcp
 ================
 
-configure firewall aspects of your openwrt system.
+configure DHCP aspects of your openwrt system.
 compare: [http://wiki.openwrt.org/doc/uci/dhcp]
 
 Role Variables
