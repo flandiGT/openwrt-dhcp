@@ -4,8 +4,8 @@
     command: set
     config: "dhcp"
     section: "{{interface}}"
-    option: "interface"
     type: "dhcp"
+    option: "interface"
     value: "{{interface}}"
   notify:
     - uci commit dhcp
@@ -14,10 +14,10 @@
 - name: set dhcp_config leasetime
   uci:
     command: set
-    config: "firewall"
+    config: "dhcp"
     section: "{{interface}}"
-    option: "leasetime"
     type: "dhcp"
+    option: "leasetime"
     value: "{{leasetime}}"
   when: leasetime != {}
   notify:
@@ -27,10 +27,10 @@
 - name: set dhcp_config limit
   uci:
     command: set
-    config: "firewall"
+    config: "dhcp"
     section: "{{interface}}"
-    option: "limit"
     type: "dhcp"
+    option: "limit"
     value: "{{limit}}"
   when: limit != {}
   notify:
@@ -40,10 +40,10 @@
 - name: set dhcp_config start
   uci:
     command: set
-    config: "firewall"
+    config: "dhcp"
     section: "{{interface}}"
-    option: "start"
     type: "dhcp"
+    option: "start"
     value: "{{start}}"
   when: start != {}
   notify:

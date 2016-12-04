@@ -17,12 +17,13 @@ Role Variable elements
 
 dhcp_configs attributes:
 
-| attribute name | property type       | valid values / examples                    |
-|----------------|---------------------|--------------------------------------------|
-| interface      | text                | interface name this dhcp-config belongs to |
-| leasetime      | interval as text    | 1h/12h...                                  |
-| limit          | number              | number of maximum leases, e.g. 150         |
-| start          | number              | starting IP address                        |
+| attribute name | property type       | valid values / examples                      |
+|----------------|---------------------|----------------------------------------------|
+| index          | number              | optional: the index of the dhcp-host setting |
+| interface      | text                | interface name this dhcp-config belongs to   |
+| leasetime      | interval as text    | 1h/12h...                                    |
+| limit          | number              | number of maximum leases, e.g. 150           |
+| start          | number              | starting IP address                          |
 
 dhcp_hosts attributes:
 

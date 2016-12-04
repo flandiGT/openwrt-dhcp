@@ -11,9 +11,8 @@
 - name: set dhcp-hosts
   include: set_dhcp_host.yml
   vars:
-    index: "{{item.0}}"
+    index: "{{item.1.index | default(item.0)}}"
     name: "{{item.1.name}}"
     mac: "{{item.1.mac}}"
     ip: "{{item.1.ip}}"
-#  with_items: "{{dhcp_hosts}}"
   with_indexed_items: "{{dhcp_hosts}}"
