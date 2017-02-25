@@ -1,16 +1,22 @@
 openwrt-dhcp
-================
+============
 
 configure DHCP aspects of your openwrt system.
 compare: [http://wiki.openwrt.org/doc/uci/dhcp]
 
+Dependencies
+------------
+
+* [openwrt-uci](https://github.com/flandiGT/openwrt-uci)
+
 Role Variables
+
 --------------
 
 | variable name     | type             | element structure    | default |
 |-------------------|------------------|----------------------|---------|
-| dhcp_configs      | array of objects | see attributes below | <empty> |
-| dhcp_hosts        | array of objects | see attributes below | <empty> |
+| dhcp_configs      | array of objects | see attributes below | []      |
+| dhcp_hosts        | array of objects | see attributes below | []      |
 
 Role Variable elements
 ----------------------
@@ -33,31 +39,28 @@ dhcp_hosts attributes:
 | mac            | mac address as text | mac address of the host (like '01:23:45:67:89:01') |
 | ip             | ip address as text  | IP address of the host (like '192.168.1.2')        |
 
-Dependencies
-------------
-
-* openwrt-uci
-
 Example Playbook
 ----------------
 
 ```
-    - role: openwrt-dhcp
-      dhcp_configs: [{
-        interface: guest,
-        leasetime: 12h,
-        limit: 150,
-        start: 100
-      }]
-      dhcp_hosts: [{
-        name: 'windows-pc',
-        mac: '01:23:45:67:89:01',
-        ip: '192.168.1.2'
-      }, {
-        name: 'android-phone',
-        mac: '98:76:54:32:10:98',
-        ip: '192.168.1.3'
-      }]
+ - role: openwrt-dhcp
+   dhcp_configs:
+   - interface: lan
+     leasetime: 24h
+     limit: 150
+     start: 100
+   - interface: guest
+     leasetime: 12h
+     limit: 150
+     start: 100 
+   dhcp_hosts:
+   - name: 'windows-pc'
+     mac: '01:23:45:67:89:01'
+     ip: '192.168.1.2'
+   - name: 'android-phone'
+     mac: '98:76:54:32:10:98'
+     ip: '192.168.1.3'
 ```
 
-[http://wiki.openwrt.org/doc/uci/dhcp]: http://wiki.openwrt.org/doc/uci/dhcp
+Official documentation
+* [OpenWRT Wiki / DNS and DHCP configuration](http://wiki.openwrt.org/doc/uci/dhcp)

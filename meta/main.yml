@@ -1,7 +1,8 @@
 ---
 galaxy_info:
-  author: flandi GT
+  author: flandiGT
   description: configure dhcp aspects of your openwrt system.
+  license: MIT
   min_ansible_version: 1.7
   platforms:
    - name: Openwrt
@@ -9,5 +10,6 @@ galaxy_info:
      - 15.05
   categories:
     - system
+    - networking
 dependencies:
   - { role: openwrt-uci }
