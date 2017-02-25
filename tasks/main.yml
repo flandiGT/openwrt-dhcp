@@ -4,28 +4,28 @@
     command: set_object
     config: dhcp
     type: dhcp
-    section: "{{item.interface}}"
+    section: "{{ item.interface }}"
     values:
-      interface: "{{item.interface}}"
-      leasetime: "{{item.leasetime | default(None)}}"
-      limit: "{{item.limit | default(None)}}"
-      start: "{{item.start | default(None)}}"
-  with_items: "{{dhcp_configs}}"
+      interface: "{{ item.interface }}"
+      leasetime: "{{ item.leasetime | default(None) }}"
+      limit: "{{ item.limit | default(None) }}"
+      start: "{{ item.start | default(None) }}"
+  with_items: "{{ dhcp_configs }}"
   notify:
     - uci commit dhcp
-    - reload network for openwrt-dhcp
+    - reload network
 
 - name: set dhcp-hosts
   uci:
     command: set_object
     config: dhcp
     type: host
-    index: "{{item.1.index | default(item.0)}}"
+    index: "{{ item.1.index | default(item.0) }}"
     values:
-      name: "{{item.1.name}}"
-      mac: "{{item.1.mac}}"
-      ip: "{{item.1.ip}}"
-  with_indexed_items: "{{dhcp_hosts}}"
+      name: "{{ item.1.name }}"
+      mac: "{{ item.1.mac }}"
+      ip: "{{ item.1.ip }}"
+  with_indexed_items: "{{ dhcp_hosts }}"
   notify:
     - uci commit dhcp
-    - reload network for openwrt-dhcp
+    - reload network
