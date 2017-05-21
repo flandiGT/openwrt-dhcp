@@ -10,6 +10,8 @@
       leasetime: "{{ item.leasetime | default(None) }}"
       limit: "{{ item.limit | default(None) }}"
       start: "{{ item.start | default(None) }}"
+      noresolv: "{{ item.noresolv | default(None) | int(None) }}"
+      server: "{{ item.server | default([]) }}"
   with_items: "{{ dhcp_configs }}"
   notify:
     - uci commit dhcp

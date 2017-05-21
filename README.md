@@ -30,6 +30,8 @@ dhcp_configs attributes:
 | leasetime      | interval as text    | 1h/12h...                                    |
 | limit          | number              | number of maximum leases, e.g. 150           |
 | start          | number              | starting IP address                          |
+| noresolv       | boolean             | True/False                                   |
+| server         | array of texts      | ['127.0.0.1#9053']                           |
 
 dhcp_hosts attributes:
 
